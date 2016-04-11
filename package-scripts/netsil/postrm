@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Perform necessary netsil removal steps
+# after package is uninstalled.
+#
+
+echo "netsil has been uninstalled!"
+
+exit 0
