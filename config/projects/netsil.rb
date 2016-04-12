@@ -19,7 +19,7 @@ build_iteration 1
 dependency "preparation"
 
 # netsil dependencies/components
-# dependency "somedep"
+# dependency "blah"
 
 # Version manifest file
 dependency "version-manifest"
