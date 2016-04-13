@@ -76,16 +76,12 @@ build do
 
   if linux?
     command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/datadog-agent/source/install_agent.sh"
-    # copy over the example configuration file, but make the dd_url point to netsil's endpoint
-    # command "sed 's/dd_url: https:\/\/app.datadoghq.com\//dd_url: #{env[default_endpoint]}' /etc/dd-agent/datadog.conf.example > /etc/dd-agent/datadog.conf"
     # restart the agent
     command "sudo /etc/init.d/datadog-agent restart"
   end
 
   if osx?
     command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/osx/install.sh"
-    # copy over the example configuration file, but make the dd_url point to netsil's endpoint
-    # command "sed 's/dd_url: https:\/\/app.datadoghq.com\//dd_url: #{env[endpoint_env]}' /opt/datadog-agent/etc/datadog.conf.example > /opt/datadog-agent/etc/datadog.conf"
     # restart the agent
     command "sudo /opt/datadog-agent/bin/datadog-agent restart >/dev/null"
   end
