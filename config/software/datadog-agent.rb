@@ -46,14 +46,16 @@
 #
 # These options are required for all software definitions
 name "datadog-agent"
-default_version "5.7.3"
+# default_version "5.7.3"
 
 # A software can specify more than one version that is available for install
 # version("#{version}") { source url: "https://github.com/DataDog/dd-agent/archive/#{version}.tar.gz" }
-source github: "DataDog/dd-agent"
+source github: "mbeissinger/dd-agent"
 
 # This is the path, inside the tarball, where the source resides
-# relative_path "dd-agent"
+relative_path "dd-agent"
+
+puts "#{project_dir}"
 
 endpoint_env = 'NETSIL_DD_ENDPOINT'
 api_env = 'DD_API_KEY'
@@ -73,9 +75,8 @@ build do
   end
 
   if linux?
-    command "DD_API_KEY=#{env[api_env]}"
-    command "cd packaging/datadog-agent/source/"
-    command "bash install_agent.sh"
+    command "sudo git checkout master"
+    command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/datadog-agent/source/install_agent.sh"
     # copy over the example configuration file, but make the dd_url point to netsil's endpoint
     command "sed 's/dd_url: https:\/\/app.datadoghq.com\//dd_url: #{env[default_endpoint]}' /etc/dd-agent/datadog.conf.example > /etc/dd-agent/datadog.conf"
     # restart the agent
@@ -83,7 +84,8 @@ build do
   end
 
   if osx?
-    command "DD_API_KEY=#{env[api_env]} bash packaging/osx/install.sh"
+    command "sudo git checkout master"
+    command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/osx/install.sh"
     # copy over the example configuration file, but make the dd_url point to netsil's endpoint
     command "sed 's/dd_url: https:\/\/app.datadoghq.com\//dd_url: #{env[endpoint_env]}' /opt/datadog-agent/etc/datadog.conf.example > /opt/datadog-agent/etc/datadog.conf"
     # restart the agent

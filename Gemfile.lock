@@ -1,8 +1,9 @@
 GIT
-  remote: git://github.com/mbeissinger/omnibus-software.git
-  revision: 93293b6a64dfd1e8c8f51af089be75569bdf5076
+  remote: git://github.com/opscode/omnibus-software.git
+  revision: 8d611676c4458fa679cbc48e2111892ae7986cbf
   specs:
-    omnibus-software (3.0.0)
+    omnibus-software (4.0.0)
+      omnibus (>= 5.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -66,9 +67,6 @@ GEM
       libyajl2 (~> 1.2)
     hashie (3.4.3)
     hitimes (1.2.3)
-    httparty (0.13.7)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     httpclient (2.6.0.1)
     ipaddress (0.8.3)
     jmespath (1.2.4)
@@ -93,7 +91,6 @@ GEM
     mixlib-log (1.6.0)
     mixlib-shellout (2.2.6)
     mixlib-versioning (1.1.0)
-    multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -181,7 +178,6 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf (~> 3.3)
-  httparty
   kitchen-vagrant (~> 0.18)
   omnibus (~> 5.3)
   omnibus-software!
