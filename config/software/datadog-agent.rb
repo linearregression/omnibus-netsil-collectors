@@ -75,7 +75,7 @@ build do
   end
 
   if linux?
-    command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/datadog-agent/source/install_agent.sh"
+    command "DD_INSTALL_ONLY=true DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/datadog-agent/source/install_agent.sh"
     # restart the agent
     command "sudo /etc/init.d/datadog-agent restart"
   end

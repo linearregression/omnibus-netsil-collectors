@@ -18,8 +18,17 @@ build_iteration 1
 # creates required build directories
 dependency "preparation"
 
+# Pip
+dependency "pip"
+
 # Datadog agent
 dependency "datadog-agent"
+
+# traffic-collector (rpcapd)
+dependency "traffic-collector"
+
+# metadata-collector 
+dependency "metadata-collector"
 
 # Version manifest file
 dependency "version-manifest"
