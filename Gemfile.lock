@@ -1,9 +1,8 @@
 GIT
-  remote: git://github.com/opscode/omnibus-software.git
-  revision: 8d611676c4458fa679cbc48e2111892ae7986cbf
+  remote: git://github.com/netsil/omnibus-software.git
+  revision: 0fe7ec070a576d5486bb74af79bc233860ccd2df
   specs:
-    omnibus-software (4.0.0)
-      omnibus (>= 5.2.0)
+    omnibus-software (3.0.0)
 
 GEM
   remote: https://rubygems.org/

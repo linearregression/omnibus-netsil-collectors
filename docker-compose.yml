@@ -1,0 +1,12 @@
+version: '2'
+services:
+    omnibus-ubuntu:
+        image: netsil/omnibus-ubuntu:latest
+        volumes:
+            - ./Berksfile:/root/omnibus-netsil-collectors/Berksfile:ro
+            - ./Gemfile.lock:/root/omnibus-netsil-collectors/Gemfile.lock
+            - ./omnibus.rb:/root/omnibus-netsil-collectors/omnibus.rb:ro
+            - ./config:/root/omnibus-netsil-collectors/config:ro
+            - ./Gemfile:/root/omnibus-netsil-collectors/Gemfile:ro
+            - ./lib:/root/omnibus-netsil-collectors/lib:ro
+            - ./package-scripts:/root/omnibus-netsil-collectors/package-scripts:ro
