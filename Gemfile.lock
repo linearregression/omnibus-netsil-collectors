@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/netsil/omnibus-software.git
-  revision: 12925d1bc9869098cadcca1900327f9be9d7d334
+  revision: e792b5848932e376633a98ee186154757a4c47c8
   specs:
     omnibus-software (3.0.0)
 

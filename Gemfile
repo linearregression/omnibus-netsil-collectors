@@ -5,10 +5,10 @@ gem 'omnibus', '~> 5.3'
 
 # Use Chef's software definitions. It is recommended that you write your own
 # software definitions, but you can clone/fork Chef's to get you started.
-gem 'omnibus-software', github: 'opscode/omnibus-software'
+# gem 'omnibus-software', github: 'opscode/omnibus-software'
 
-# (luhkevin) We're using our own software definitions here to fill in the packages that chef doesn't support
-gem 'omnibus-software-netsil', github: 'netsil/omnibus-software'
+# (luhkevin) We're using our own software definitions here, forked from chef's main repo
+gem 'omnibus-software', github: 'netsil/omnibus-software'
 
 # gem 'omnibus', git: 'git://github.com/datadog/omnibus-ruby.git', branch: 'datadog-5.0.0'
 # gem 'omnibus-software', github: 'mbeissinger/omnibus-software'
