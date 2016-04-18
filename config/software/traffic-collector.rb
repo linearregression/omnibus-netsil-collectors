@@ -18,8 +18,8 @@ name "traffic-collector"
 
 # A software can specify more than one version that is available for install
 # version("#{version}") { source url: "https://github.com/DataDog/dd-agent/archive/#{version}.tar.gz" }
-source url: "https://s3.amazonaws.com/bin.netsil.io/rpcapd/rpcapd.tar.gz",
-       md5: "dcfbfa5ed4c5281711469a17cda09c7b"
+source url: "https://s3.amazonaws.com/bin.netsil.io/rpcapd/traffic-collector.tar.gz",
+       md5: "cd2296dcc3a37bd445bfa58beb50afac"
 
 # This is the path, inside the tarball, where the source resides
 relative_path "."
@@ -43,5 +43,9 @@ build do
     mkdir "#{install_dir}/traffic-collector/"
     copy 'rpcapd', "#{install_dir}/traffic-collector/"
     copy 'rpcapd.ini', "#{install_dir}/traffic-collector/"
+
+    # Install supervisor conf files
+    mkdir "#{install_dir}/conf.d"
+    copy 'traffic-collector.conf', "#{install_dir}/conf.d/"
   end
 end

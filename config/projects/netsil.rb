@@ -10,7 +10,7 @@ homepage "https://netsil.com"
 
 # Defaults to C:/netsil on Windows
 # and /opt/netsil on all other platforms
-install_dir "/opt/netsil"
+install_dir "/opt/netsil/collectors"
 
 build_version Omnibus::BuildVersion.semver
 build_iteration 1
@@ -18,8 +18,11 @@ build_iteration 1
 # creates required build directories
 dependency "preparation"
 
-# Pip
-dependency "pip"
+# Supervisor process to run everything
+dependency "supervisor"
+
+# Contains master supervisor file
+dependency 'netsil'
 
 # Datadog agent
 dependency "datadog-agent"

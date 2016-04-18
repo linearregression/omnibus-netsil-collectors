@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 # Dependencies
 RUN apt-get update && \ 
-    apt-get install -y libssl-dev libreadline-dev zlib1g-dev git make wget autoconf bison vim apt-transport-https rbenv g++ unzip
+    apt-get install -y libssl-dev libreadline-dev zlib1g-dev git make wget autoconf bison vim apt-transport-https rbenv g++ unzip fakeroot
 
 RUN git config --global user.email kevin@netsil.com && git config --global user.name luhkevin
 

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build -t netsil/omnibus-ubuntu build/ubuntu

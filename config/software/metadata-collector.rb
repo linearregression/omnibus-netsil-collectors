@@ -19,7 +19,7 @@ name "metadata-collector"
 # A software can specify more than one version that is available for install
 # version("#{version}") { source url: "https://github.com/DataDog/dd-agent/archive/#{version}.tar.gz" }
 source url: "https://s3.amazonaws.com/bin.netsil.io/metadata-collector/metadata-collector.tar.gz",
-       md5: "b568faf1f0dbf18e793fe790d0b5c57b"
+       md5: "82ac6821bd74bdc6af7e3a7beef25b9e"
 
 # This is the path, inside the tarball, where the source resides
 relative_path "."
@@ -42,5 +42,9 @@ build do
     copy 'requirements.txt', "#{install_dir}/metadata-collector/"
 
     command "#{install_dir}/embedded/bin/pip install -I --build #{project_dir} -r #{install_dir}/metadata-collector/requirements.txt"
+
+    # Install supervisor conf files
+    mkdir "#{install_dir}/conf.d"
+    copy 'netsil-metadata-collector.conf', "#{install_dir}/conf.d/"
   end
 end

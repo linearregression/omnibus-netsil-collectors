@@ -16,16 +16,17 @@
 
 # These options are required for all software definitions
 name "netsil"
-# default_version "1.2.6"
+
+# Sources may be URLs, git locations, or path locations
+source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors.conf",
+       md5: "a840f9575310acd974ec9ded9d88fa72"
 
 # A software can specify more than one version that is available for install
 # version("1.2.6") { source md5: "618e944d7c7cd6521551e30b32322f4a" }
-
-# Sources may be URLs, git locations, or path locations
-# source url: "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/omnibus-netsil"
+# default_version "1.2.6"
 
 # This is the path, inside the tarball, where the source resides
-# relative_path "gencore"
+relative_path "."
 
 build do
   # Setup a default environment from Omnibus - you should use this Omnibus
@@ -51,4 +52,10 @@ build do
   # builders for the currently running system.
   # command "make -j #{workers}", env: env
   # command "make -j #{workers} install", env: env
+
+  # Setup supervisor config
+  if linux?
+    mkdir "#{install_dir}/conf.d"
+    copy 'netsil-collectors.conf', "#{install_dir}/conf.d/"
+  end
 end
