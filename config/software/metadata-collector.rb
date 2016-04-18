@@ -25,6 +25,7 @@ source url: "https://s3.amazonaws.com/bin.netsil.io/metadata-collector/metadata-
 relative_path "."
 
 dependency 'python'
+dependency 'pip'
 
 puts "#{project_dir}"
 
@@ -41,15 +42,5 @@ build do
     copy 'requirements.txt', "#{install_dir}/metadata-collector/"
 
     command "#{install_dir}/embedded/bin/pip install -I --build #{project_dir} -r #{install_dir}/metadata-collector/requirements.txt"
-
-    # restart the agent
-    #command "sudo /etc/init.d/datadog-agent restart"
   end
-
-  if osx?
-    # command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/osx/install.sh"
-    # restart the agent
-    # command "sudo /opt/datadog-agent/bin/datadog-agent restart >/dev/null"
-  end
-
 end

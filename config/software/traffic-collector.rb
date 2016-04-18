@@ -18,8 +18,8 @@ name "traffic-collector"
 
 # A software can specify more than one version that is available for install
 # version("#{version}") { source url: "https://github.com/DataDog/dd-agent/archive/#{version}.tar.gz" }
-source url: "https://s3.amazonaws.com/bin.netsil.io/rpcapd/rpcapd",
-       md5: "3fa1584f2b68ec26e7aba6bf463758fe"
+source url: "https://s3.amazonaws.com/bin.netsil.io/rpcapd/rpcapd.tar.gz",
+       md5: "dcfbfa5ed4c5281711469a17cda09c7b"
 
 # This is the path, inside the tarball, where the source resides
 relative_path "."
@@ -42,14 +42,6 @@ build do
   if linux?
     mkdir "#{install_dir}/traffic-collector/"
     copy 'rpcapd', "#{install_dir}/traffic-collector/"
-    # restart the agent
-    #command "sudo /etc/init.d/datadog-agent restart"
+    copy 'rpcapd.ini', "#{install_dir}/traffic-collector/"
   end
-
-  if osx?
-    # command "DD_API_KEY=#{env[api_env]} DD_URL=#{env[endpoint_env]} bash packaging/osx/install.sh"
-    # restart the agent
-    # command "sudo /opt/datadog-agent/bin/datadog-agent restart >/dev/null"
-  end
-
 end
