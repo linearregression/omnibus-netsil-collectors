@@ -16,6 +16,3 @@ rbenv which bundler
 # Install gems with bundler
 bundle install --binstubs
 
-# Remove omnibus-netsil-collectors so we can use our dev verison
-rm -rf /root/omnibus-netsil-collectors/*
-

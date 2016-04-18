@@ -15,7 +15,12 @@ RUN rbenv install 2.3.0-dev && rbenv rehash
 
 # Clone omnibus-netsil-collectors *just* to get the Gemfile, so we can bake in all the gems
 WORKDIR /root
-RUN git clone https://github.com/netsil/omnibus-netsil-collectors
+
+# Should we run these ONLY when developing this image? Comment out after the image is stable?
+RUN mkdir -p /root/omnibus-netsil-collectors
+COPY Gemfile /root/omnibus-netsil-collectors/
+
+#RUN git clone https://github.com/netsil/omnibus-netsil-collectors
 
 # Copy in bake script
 COPY bake-gems.sh /root/bake-gems.sh
