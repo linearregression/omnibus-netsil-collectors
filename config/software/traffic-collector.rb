@@ -46,6 +46,6 @@ build do
 
     # Install supervisor conf files
     mkdir "#{install_dir}/conf.d"
-    copy 'traffic-collector.conf', "#{install_dir}/conf.d/"
+    copy 'netsil-traffic-collector.conf', "#{install_dir}/conf.d/"
   end
 end

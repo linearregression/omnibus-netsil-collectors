@@ -1,13 +1,21 @@
 version: '2'
 services:
     omnibus-ubuntu:
-        image: netsil/omnibus-ubuntu
+        build: ./build/deb
+        image: netsil/omnibus-ubuntu:latest
         volumes:
             - ./:/root/omnibus-netsil-collectors/:rw
+            - /var/cache/omnibus:/var/cache/omnibus:rw
             #- ./Berksfile:/root/omnibus-netsil-collectors/Berksfile:ro
             #- ./omnibus.rb:/root/omnibus-netsil-collectors/omnibus.rb:ro
             #- ./config:/root/omnibus-netsil-collectors/config:ro
             #- ./lib:/root/omnibus-netsil-collectors/lib:ro
             #- ./package-scripts:/root/omnibus-netsil-collectors/package-scripts:ro
             #- ./pkg:/root/omnibus-netsil-collectors/pkg:rw
+#    omnibus-ubuntu-test:
+#        build: ./test/deb
+#        volumes:
+#            - ./pkg:/root/pkg:ro
+#        depends_on:
+#            - omnibus-ubuntu
 

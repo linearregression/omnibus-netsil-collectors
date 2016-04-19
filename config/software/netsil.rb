@@ -55,6 +55,7 @@ build do
 
   # Setup supervisor config
   if linux?
+    mkdir "#{install_dir}/log"
     mkdir "#{install_dir}/conf.d"
     copy 'netsil-collectors.conf', "#{install_dir}/conf.d/"
   end

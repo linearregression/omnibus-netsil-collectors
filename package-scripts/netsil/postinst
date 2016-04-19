@@ -12,6 +12,11 @@ error_exit()
   exit 1
 }
 
+netsil_install_dir=/opt/netsil/collectors
+
+# Run supervisor
+${netsil_install_dir}/embedded/bin/python ${netsil_install_dir}/embedded/lib/python2.7/site-packages/supervisor/supervisord.py -c ${netsil_install_dir}/conf.d/netsil-collectors.conf
+
 echo "Thank you for installing netsil!"
 
 exit 0
