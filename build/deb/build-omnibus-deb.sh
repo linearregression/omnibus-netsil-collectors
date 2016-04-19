@@ -1,6 +1,8 @@
 #!/bin/bash
 set -x
 
+source ~/.bashrc 
+
 cd /root/omnibus-netsil-collectors
 
 mkdir -p /root/omnibus-netsil-collectors/pkg
