@@ -19,8 +19,8 @@ name "netsil"
 
 # Sources may be URLs, git locations, or path locations
 #source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors-meta.tar.gz",
-source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors.conf",
-       md5: "a840f9575310acd974ec9ded9d88fa72"
+source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors.tar.gz",
+       md5: "0bc96273893bc71243a66d9b1ed0cebe"
 
 # A software can specify more than one version that is available for install
 # version("1.2.6") { source md5: "618e944d7c7cd6521551e30b32322f4a" }
@@ -58,11 +58,8 @@ build do
   if linux?
     mkdir "#{install_dir}/conf.d"
     
-    # TODO: Do omnibus only create this folder if it has a file copied into it?
-    mkdir "#{install_dir}/log"
-
-    # copy 'start.sh', "#{install_dir}/start.sh"
-    # copy 'stop.sh', "#{install_dir}/stop.sh"
+    copy 'start.sh', "#{install_dir}/start.sh"
+    copy 'stop.sh', "#{install_dir}/stop.sh"
     copy 'netsil-collectors.conf', "#{install_dir}/conf.d/"
   end
 end

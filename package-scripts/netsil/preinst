@@ -12,4 +12,8 @@ if [ -f /var/run/netsil-supervisord.pid ] ; then
     sleep 3
 fi
 
+# Create install directory and log directory
+mkdir -p /opt/netsil/collectors
+mkdir -p /opt/netsil/collectors/log
+
 # Install certificate for sslproxy, create iptables rules, and also create a named pipe for sslsplit --> rpcapd

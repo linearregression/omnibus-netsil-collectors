@@ -11,10 +11,13 @@ services:
         image: netsil/omnibus-rpm:latest
         volumes:
             - ./:/root/omnibus-netsil-collectors/:rw
-#    omnibus-ubuntu-test:
-#        build: ./test/deb
-#        volumes:
-#            - ./pkg:/root/pkg:ro
-#        depends_on:
-#            - omnibus-ubuntu
+            - /var/cache/omnibus:/var/cache/omnibus:rw
+    omnibus-deb-test:
+        build: ./test/deb
+        volumes:
+            - ./pkg:/root/pkg:ro
+    omnibus-rpm-test:
+        build: ./test/rpm
+        volumes:
+            - ./pkg:/root/pkg:ro
 

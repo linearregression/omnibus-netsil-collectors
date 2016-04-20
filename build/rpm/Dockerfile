@@ -1,9 +1,23 @@
 FROM centos:7
 
 # Dependencies
-RUN yum update -y; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install openssl openssl-devel readline-devel zlib-devel git make wget autoconf bison vim gcc-c++ unzip libtool libtool-ltdl libtool-ltdl-devel; yum clean all
+RUN yum update -y
+RUN yum -y install epel-release
+RUN yum -y install openssl \ 
+        openssl-devel \
+        readline-devel \ 
+        zlib-devel \ 
+        git \ 
+        make \ 
+        wget \ 
+        autoconf \ 
+        bison \ 
+        gcc-c++ \ 
+        unzip \ 
+        libtool \ 
+        libtool-ltdl \ 
+        libtool-ltdl-devel
+
 RUN yum -y install ruby fakeroot patch rpm-build
 
 RUN git config --global user.email kevin@netsil.com && git config --global user.name luhkevin
@@ -20,6 +34,9 @@ COPY Gemfile /root/omnibus-netsil-collectors/
 # Copy in bake script
 COPY bake-gems.sh /root/bake-gems.sh
 RUN bash /root/bake-gems.sh
+
+# Get rid of the Gemfile.lock so if we have updates to the base Gemfile, we can install them
+RUN rm /root/omnibus-netsil-collectors/Gemfile.lock
 
 # Copy in omnibus build script
 COPY build-omnibus-rpm.sh /root/build-omnibus-rpm.sh
