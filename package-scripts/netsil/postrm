@@ -4,6 +4,10 @@
 # after package is uninstalled.
 #
 
+# Remove everything in the collectors directory
+rm -rf /opt/netsil/collectors
+
+# TODO: Remove sslproxy's named pipe and the trusted cert we installed, as well as the iptables rules
 echo "netsil has been uninstalled!"
 
 exit 0
