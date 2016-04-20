@@ -42,6 +42,7 @@ build do
   if linux?
     mkdir "#{install_dir}/traffic-collector/"
     copy 'rpcapd', "#{install_dir}/traffic-collector/"
+    # rpcapd.ini will be re-generated when fetching the package
     copy 'rpcapd.ini', "#{install_dir}/traffic-collector/"
 
     # Install supervisor conf files

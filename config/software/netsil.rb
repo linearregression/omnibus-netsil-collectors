@@ -18,6 +18,7 @@
 name "netsil"
 
 # Sources may be URLs, git locations, or path locations
+#source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors-meta.tar.gz",
 source url: "https://s3.amazonaws.com/bin.netsil.io/netsil-collectors/netsil-collectors.conf",
        md5: "a840f9575310acd974ec9ded9d88fa72"
 
@@ -55,8 +56,13 @@ build do
 
   # Setup supervisor config
   if linux?
-    mkdir "#{install_dir}/log"
     mkdir "#{install_dir}/conf.d"
+    
+    # TODO: Do omnibus only create this folder if it has a file copied into it?
+    mkdir "#{install_dir}/log"
+
+    # copy 'start.sh', "#{install_dir}/start.sh"
+    # copy 'stop.sh', "#{install_dir}/stop.sh"
     copy 'netsil-collectors.conf', "#{install_dir}/conf.d/"
   end
 end

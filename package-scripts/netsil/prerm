@@ -12,11 +12,11 @@ error_exit()
   exit 1
 }
 
-# First, stop supervisor
-kill -15 $(cat /var/run/netsil-supervisord.pid)
-
-# Wait for supervisor to tear stuff down
-sleep 3
+# First, stop supervisor and sleep
+if [ -f /var/run/netsil-supervisord.pid ] ; then
+    kill -15 $(cat /var/run/netsil-supervisord.pid)
+    sleep 3
+fi
 
 # Then, remove everything in the collectors directory
 rm -rf /opt/netsil/collectors

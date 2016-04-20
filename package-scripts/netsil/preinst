@@ -5,3 +5,10 @@
 #
 
 echo "You're about to install netsil!"
+
+# Stop any existing netsil-collectors
+if [ -f /var/run/netsil-supervisord.pid ] ; then 
+    kill -15 $(cat /var/run/netsil-supervisord.pid)
+    sleep 3
+fi
+

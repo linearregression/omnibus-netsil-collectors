@@ -4,7 +4,7 @@
 # All Rights Reserved.
 #
 
-name "netsil"
+name "netsil-collectors"
 maintainer "Netsil"
 homepage "https://netsil.com"
 
